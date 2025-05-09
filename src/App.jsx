@@ -60,7 +60,7 @@ export default function App() {
       toast.error("Ma'lumot kiritilmadi!");
       return;
     }
-    addData({ title: state.newTodo, priority: "medium" })
+    addData({ title: state.newTodo, priority: "yangi ma'lmot" })
       .then((res) => {
         dispatch({
           type: "addData",
