@@ -34,9 +34,9 @@ function reducer(state, action) {
       return { ...state, todos: [...state.todos, action.payload], newTodo: "", openModal: false };
     case "deleteData":
       return { ...state, todos: state.todos.filter((el) => el.id !== action.payload) };
-    case "set_newData":
+    case "newData":
       return { ...state, newTodo: action.payload };
-    case "toggle_modal":
+    case "modal":
       return { ...state, openModal: !state.openModal };
     default:
       return state;
@@ -102,7 +102,7 @@ export default function App() {
             </SelectContent>
           </Select>
 
-          <AlertDialog open={state.openModal} onOpenChange={() => dispatch({ type: "toggle_modal" })}>
+          <AlertDialog open={state.openModal} onOpenChange={() => dispatch({ type: "modal" })}>
             <AlertDialogTrigger asChild>
               <Button variant="outline">Add</Button>
             </AlertDialogTrigger>
@@ -113,11 +113,11 @@ export default function App() {
                   type="text"
                   placeholder="Matn kiritig.."
                   value={state.newTodo}
-                  onChange={(e) => dispatch({ type: "set_newData", payload: e.target.value })}
+                  onChange={(e) => dispatch({ type: "newData", payload: e.target.value })}
                 />
               </AlertDialogHeader>
               <AlertDialogFooter>
-                <AlertDialogCancel onClick={() => dispatch({ type: "toggle_modal" })}>Cancel</AlertDialogCancel>
+                <AlertDialogCancel>Cancel</AlertDialogCancel>
                 <AlertDialogAction onClick={handleAdd}>Continue</AlertDialogAction>
               </AlertDialogFooter>
             </AlertDialogContent>
